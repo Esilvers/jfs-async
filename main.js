@@ -40,6 +40,23 @@ function getRate() {
     *    usdRateDisplay.innerText = val;    *
     *
     *    *** Write code below here *** */
+   fetch(api)
+   .then(response => {
+       return (response.json());
+   })
+   .then(data => {
+       console.log(data);
+    let usd = data.bpi.USD.rate;
+    let timeUsd = data.time.updated;
+    let eur = data.bpi.EUR.rate;
+    let gbp = data.bpi.GBP.rate;
+
+    gbpRateDisplay.innerHTML = '1 Bitcoin = £ ' + gbp + ' Udpated on ' + timeUsd;
+    usdRateDisplay.innerHTML = '1 Bitcoin = $ ' + usd + ' Udpated on ' + timeUsd;
+    eurRateDisplay.innerHTML = '1 Bitcoin = € ' + eur + ' Udpated on ' + timeUsd;})
+   
+
+   
 
     
 }
